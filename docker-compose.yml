@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  clickhouse:
+    image: yandex/clickhouse-server:latest
+    container_name: clickhouse-server
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    volumes:
+      - ./data:/var/lib/clickhouse
+      - ./config:/etc/clickhouse-server/config.d
+      - ./logs:/var/log/clickhouse-server
+    environment:
+      CLICKHOUSE_DB: default
